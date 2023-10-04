@@ -9,13 +9,13 @@ import "./styles.css";
 import SearchForm from "./components/SearchForm";
 
 
-app.get('*', (req, res) => {
-	res.sendFile(path.resolve(path.join(__dirname, 'public', 'index.html')))
-})
+// app.get('*', (req, res) => {
+// 	res.sendFile(path.resolve(path.join(__dirname, 'public', 'index.html')))
+// })
 
-app.listen(PORT, () => {
-    console.log(`API Listening on port ${PORT}`);
-});
+// app.listen(PORT, () => {
+//     console.log(`API Listening on port ${PORT}`);
+// });
 
 
 export default function App() {
