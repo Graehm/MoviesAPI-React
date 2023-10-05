@@ -56,11 +56,9 @@ export default function App() {
   return (
     <div className="App">
       <Form getMovie={getMovie} />
-      <MovieDescription movie={movie} />
       <MovieDisplay movie={movie} />
       <SearchForm getMovies={getMovies} />
       <MovieList movies={movies} />
-      <SearchForm getMovies={getMovies} />
     </div>
   );
 }
