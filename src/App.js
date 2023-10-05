@@ -7,6 +7,7 @@ import MovieDisplay from "./components/MovieDisplay";
 import MovieList from "./components/MovieList";
 import "./styles.css";
 import SearchForm from "./components/SearchForm";
+import MovieDescription from "./components/MovieDescription";
 
 
 // app.get('*', (req, res) => {
@@ -55,10 +56,11 @@ export default function App() {
   return (
     <div className="App">
       <Form getMovie={getMovie} />
-
+      <MovieDescription movie={movie} />
       <MovieDisplay movie={movie} />
       <SearchForm getMovies={getMovies} />
       <MovieList movies={movies} />
+      <SearchForm getMovies={getMovies} />
     </div>
   );
 }
