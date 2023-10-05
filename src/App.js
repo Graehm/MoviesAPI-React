@@ -9,7 +9,17 @@ import "./styles.css";
 import SearchForm from "./components/SearchForm";
 import MovieDescription from "./components/MovieDescription";
 
+// --------- suggested main export function from arthur ----------- //
+// import MovieDisplay from './MovieDisplay'
+// export default function MovieList({movies}){
+//   return (
+//       movies.map((movie) => {
+//         return <MovieDisplay key={movie.imdbID} movie={movie}/>
+//     })
+//   )
+// }
 
+// -------------- seperation of concerns concern here --------------- //
 // app.get('*', (req, res) => {
 // 	res.sendFile(path.resolve(path.join(__dirname, 'public', 'index.html')))
 // })
