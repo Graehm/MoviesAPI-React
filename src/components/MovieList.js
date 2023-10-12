@@ -12,3 +12,5 @@ export default function MovieList({ movies }) {
     ? loading()
     : loaded();
 }
+
+
