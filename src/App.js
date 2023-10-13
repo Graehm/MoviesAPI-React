@@ -27,7 +27,7 @@ import "./styles.css";
 //     console.log(`API Listening on port ${PORT}`);
 // });
 export default function App() {
-  const apiKey = "98e3fb1f"; // this would be in .env
+  const apiKey = '67faf4f6'; // this would be in .env
 
   // state to hold movie list data
   const [movieList, setMovieList] = useState(null);
