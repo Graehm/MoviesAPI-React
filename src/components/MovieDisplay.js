@@ -30,11 +30,21 @@ export default function MovieDisplay({
       <img src={movie.Poster} alt={movie.Title} />
       {selectedMovie ? (
         <div>
-          <p>Director: {movie.Director}</p>
-          <p>imdb Rating: {movie.imdbRating}</p>
-          <p>Metascore: {movie.Metascore}</p>
-          <p>Plot: {movie.Plot}</p>
-          <p>Rated: {movie.Rated}</p>
+          <p>
+            Director: {movie.Director}
+          </p>
+          <p>
+            imdb Rating: {movie.imdbRating}
+          </p>
+          <p>
+            Metascore: {movie.Metascore}
+          </p>
+          <p>
+            Plot: {movie.Plot}
+          </p>
+          <p>
+            Rated: {movie.Rated}
+          </p>
         </div>
       ) : (
         <></>
