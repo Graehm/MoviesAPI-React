@@ -1,46 +1,51 @@
-.App {
-    font-family: "Oswald", sans-serif;
-    text-align: center;
-    /* background-color: whitesmoke; */
-    display: flex;
-    flex-direction: column;
-  }
-  
-  #title {
-    color: #0a0a09;
-    font-size: 8vmin;
-  }
-  /* for search title*/
-  .form {
-    color: green;
-    display: inline;
-    font-size: 3vmin;
-  }
-  
-  /* for input field */
-  .field {
-    background-color: blue;
-    display: inline-flex;
-    font-size: 3vmin;
-  }
-  
-  /* for submit button */
-  .submit {
-    color: black;
-    display: inline-flex;
-    font-size: 3vmin;
-    border-radius: 50px;
-  }
-  
-  .submit:hover {
-    cursor: pointer;
-    background-color: darkgray;
-  }
-  
-  /* for description text */
-  .descriptions {
-    text-align: left;
-    list-style: none;
-    list-style-type: none;
-  }
-  
+body {
+  font-family: futura;
+  text-align: center;
+  background-color: #1f1f1f;
+  display: flex;
+  justify-content: center;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  color: white;
+  font-size: 20px;
+}
+
+.searchBox {
+  width: 150px;
+  height: 25px;
+  border-radius: 5px;
+  border-style: none;
+  margin-left: 5px;
+  margin-right: 5px;
+  font-size: 15px;
+}
+
+.submitButton {
+  border-radius: 5px;
+  border-style: none;
+  font-size: 15px;
+  height: 27px;
+}
+
+.movieList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  color: white;
+  padding: 10px;
+  font-family: futura;
+}
+
+.movie {
+  margin: 10px;
+  width: 300px;
+  color: white;
+}
+
+p {
+  color: white;
+}

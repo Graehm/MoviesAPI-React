@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function Form({ getMovie }) {
+export default function Form({ getMovieList }) {
   const [formData, setFormData] = useState({
     searchTerm: ""
   });
@@ -10,7 +10,7 @@ export default function Form({ getMovie }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    getMovie(formData.searchTerm);
+    getMovieList(formData.searchTerm);
   };
 
   return (
