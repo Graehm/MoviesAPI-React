@@ -3,7 +3,7 @@ export default function MovieDisplay({
   selectedMovie,
   setSelectedMovie
 }) {
-  const apiKey = '67faf4f6';
+  const apiKey = process.env.REACT_APP_API_KEY;
   const handleClick = async (e) => {
     try {
       // make fetch request and store response
