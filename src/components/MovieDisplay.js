@@ -18,6 +18,11 @@ export default function MovieDisplay({
       console.error(error);
     }
   };
+  const handleBackBttn = async () => {
+    setSelectedMovie(null);
+    await getMovieList(searchTermEntered, resultsPage);
+    window.scrollTo(0, 0);
+  };
 
   // function to display loading text while data is beign fetched
   const loading = () => <>Currently Loading Movie...</>;
@@ -45,6 +50,9 @@ export default function MovieDisplay({
           <p>
             Rated: {movie.Rated}
           </p>
+          <button id='returnBtn' onClick={handleBackBttn}>
+            Return
+          </button>
         </div>
       ) : (
         <></>
