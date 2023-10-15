@@ -3,7 +3,10 @@ import MovieDisplay from "./MovieDisplay";
 export default function MovieIndex({
   movieList,
   selectedMovie,
-  setSelectedMovie
+  setSelectedMovie,
+  getMovieList, 
+  searchTermEntered, 
+  resultPage
 }) {
   // function to display loading text while data is beign fetched
   const loading = () => <h1>Currently loading movies</h1>;
@@ -14,9 +17,12 @@ export default function MovieIndex({
       <MovieDisplay
         key={movie.imdbID}
         movie={movie}
-        // pass selevted movie state variable and selected movie updater function for use in MovieDisplay component
+        // pass selected movie state variable and selected movie updater function for use in MovieDisplay component
         selectedMovie={selectedMovie}
         setSelectedMovie={setSelectedMovie}
+        getMovieList={getMovieList}
+        searchTermEntered={searchTermEntered}
+        resultsPage={resultPage}
       />
     ));
 
