@@ -34,7 +34,7 @@ export default function MovieDisplay({
     // if there is a movie selected, return the selected movie and extended details
     <div className="movie" onClick={handleClick}>
       <h2>{movie.Title}</h2>
-      <p>{movie.Year}</p>
+      <p>{movie.Year}</p> 
       <img src={movie.Poster} alt={movie.Title} />
       {selectedMovie ? (
         <div>
