@@ -32,10 +32,12 @@ export default function MovieDisplay({
   // once data is received...
   const loaded = () => (
     // if there is a movie selected, return the selected movie and extended details
-    <div className="movie" onClick={handleClick}>
-      <h2>{movie.Title}</h2>
-      <p>{movie.Year}</p> 
-      <img src={movie.Poster} alt={movie.Title} />
+    <div className="movie">
+      <div className="movieTile" onClick={handleClick}>
+        <h2>{movie.Title}</h2>
+        <h3>{movie.Year}</h3> 
+        <img src={movie.Poster} alt={movie.Title} />
+      </div>
       {selectedMovie ? (
         <div>
           <p>
@@ -53,7 +55,7 @@ export default function MovieDisplay({
           <p>
             Rated: {movie.Rated}
           </p>
-          <button id='returnBtn' onClick={handleBackBttn}>
+          <button id='btn' onClick={handleBackBttn}>
             Return
           </button>
         </div>
