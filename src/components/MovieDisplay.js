@@ -1,7 +1,10 @@
 export default function MovieDisplay({
   movie,
   selectedMovie,
-  setSelectedMovie
+  setSelectedMovie,
+  getMovieList,
+  searchTermEntered,
+  resultsPage
 }) {
   const apiKey = process.env.REACT_APP_API_KEY;
   const handleClick = async (e) => {
