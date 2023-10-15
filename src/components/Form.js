@@ -1,6 +1,10 @@
 import { useState } from "react";
 
-export default function Form({ getMovieList }) {
+export default function Form({ 
+  getMovieList,
+  setSearchTerm,
+  setResultPage 
+}) {
   const [formData, setFormData] = useState({
     searchTerm: ""
   });
@@ -8,16 +12,18 @@ export default function Form({ getMovieList }) {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    getMovieList(formData.searchTerm);
+    setSearchTerm(formData.searchTerm)
+    setResultPage(1)
+    await getMovieList(formData.searchTerm);
   };
 
   return (
     <div>
-      <h1 id="title">Movie Search Index</h1>
+      <h1 id="title">Search A Movie, Any Movie!</h1>
       <form className="form" onSubmit={handleSubmit}>
-        <label>Search a Movie:</label>
+        <label>Search : </label>
         <input
           className="field"
           name="searchTerm"
