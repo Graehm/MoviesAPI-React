@@ -2,8 +2,8 @@ import { useState } from "react";
 
 export default function Form({ 
   getMovieList,
-  setSearchTermEntered,
-  setResultPage 
+  // setSearchTermEntered,
+  // setResultPage 
 }) {
   const [formData, setFormData] = useState({
     searchTerm: ""
@@ -14,8 +14,8 @@ export default function Form({
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setSearchTermEntered(formData.searchTerm)
-    setResultPage(1)
+    // setSearchTermEntered(formData.searchTerm)
+    // setResultPage(1)
     await getMovieList(formData.searchTerm);
   };
 
