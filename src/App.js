@@ -32,8 +32,8 @@ export default function App() {
   // state to hold movie list data
   const [movieList, setMovieList] = useState(null);
   const [selectedMovie, setSelectedMovie] = useState(null);
-  const [resultPage, setResultPage] = useState(1);
-  const [searchTermEntered, setSearchTermEntered] = useState("Harry Potter")
+  // const [resultPage, setResultPage] = useState(1);
+  // const [searchTermEntered, setSearchTermEntered] = useState("Harry Potter")
 
   // function to get movie list
   const getMovieList = async (searchTerm) => {
