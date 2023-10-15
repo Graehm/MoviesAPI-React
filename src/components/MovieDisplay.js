@@ -56,7 +56,7 @@ export default function MovieDisplay({
             Rated: {movie.Rated}
           </p>
           <button id='btn' onClick={handleBackBttn}>
-            Return
+            Back
           </button>
         </div>
       ) : (
