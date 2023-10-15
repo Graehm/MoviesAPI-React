@@ -26,6 +26,7 @@ import "./styles.css";
 // app.listen(PORT, () => {
 //     console.log(`API Listening on port ${PORT}`);
 // });
+
 export default function App() {
   const apiKey = process.env.REACT_APP_API_KEY; 
 
@@ -54,7 +55,7 @@ export default function App() {
 
   // Adds a default search term
   useEffect(() => {
-    getMovieList("Harry Potter");
+    getMovieList("Lord of the Rings");
   }, []);
 
   return selectedMovie ? (
