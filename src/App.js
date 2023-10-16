@@ -8,24 +8,6 @@ import MovieIndex from "./components/MovieIndex";
 import MovieDisplay from "./components/MovieDisplay";
 
 import "./styles.css";
-// --------- suggested main export function from arthur ----------- //
-// import MovieDisplay from './MovieDisplay'
-// export default function MovieList({movies}){
-//   return (
-//       movies.map((movie) => {
-//         return <MovieDisplay key={movie.imdbID} movie={movie}/>
-//     })
-//   )
-// }
-
-// -------------- seperation of concerns concern here --------------- //
-// app.get('*', (req, res) => {
-// 	res.sendFile(path.resolve(path.join(__dirname, 'public', 'index.html')))
-// })
-
-// app.listen(PORT, () => {
-//     console.log(`API Listening on port ${PORT}`);
-// });
 
 export default function App() {
   const apiKey = process.env.REACT_APP_API_KEY; 
@@ -58,39 +40,78 @@ export default function App() {
     getMovieList("Lord of the Rings");
   }, []);
 
-  return selectedMovie ? (
-    // if there is a movie selected, return the selected movie
-    <div>
-      <Form getMovieList={getMovieList} />
-      <div className="movie">
-        <MovieDisplay movie={selectedMovie} />
-      </div>
-      <div>
-        <p>Director: {selectedMovie.Director}</p>
-        <p>imdb Rating: {selectedMovie.imdbRating}</p>
-        <p>Metascore: {selectedMovie.Metascore}</p>
-        <p>Plot: {selectedMovie.Plot}</p>
-        <p>Rated: {selectedMovie.Rated}</p>
-      </div>
-    </div>
-  ) : (
-    // if no movie is selected, return list of search results
+  return (
     <div className="App">
-      <div>
-        <Form getMovieList={getMovieList} />
-      </div>
-      <div className="movieList">
-        <MovieIndex
-          movieList={movieList}
-          // pass selevted movie state variable and selected movie updater function for use in MovieIndex component
-          selectedMovie={selectedMovie}
-          setSelectedMovie={setSelectedMovie}
-        />
-      </div>
+      <header>
+        <h1>Search for a Movie</h1>
+        <div className="search">
+          <Form
+            getMovieList={getMovieList}
+            searchTermEntered={searchTermEntered}
+            setSearchTermEntered={setSearchTermEntered}
+            resultsPage={resultsPage}
+            setResultsPage={setResultsPage}
+          />
+        </div>
+      </header>
+      {/* check if there is a selecte movie */}
+      {selectedMovie ? (
+        <>
+          {/* if so show only that movie's details */}
+          <MovieDisplay
+            movie={selectedMovie}
+            getMovieList={getMovieList}
+            selectedMovie={selectedMovie}
+            setSelectedMovie={setSelectedMovie}
+            searchTermEntered={searchTermEntered}
+            resultsPage={resultsPage}
+          />
+        </>
+      ) : (
+        <>
+          <div id="movie-list">
+            {/* if not, show the list of movies */}
+            <MovieIndex
+              movieList={movieList}
+              // pass selevted movie state variable and selected movie updater function for use in MovieIndex component
+              selectedMovie={selectedMovie}
+              setSelectedMovie={setSelectedMovie}
+              getMovieList={getMovieList}
+              searchTermEntered={searchTermEntered}
+              resultsPage={resultsPage}
+            />
+          </div>
+          <div id="page-btns">
+            {/* check if the number of results is more than 10 */}
+            {maxResultsPages > 1 && resultsPage > 1 ? (
+              <>
+                {/* if so, show a button to view the previous page of results */}
+                <button id="prev-page" onClick={handlePrevPage}>
+                  View Previous Page
+                </button>
+              </>
+            ) : (
+              <>{/* if results page number is 1, show nothing */}</>
+            )}
+            {movieList &&
+            maxResultsPages > 1 &&
+            resultsPage !== maxResultsPages ? (
+              <>
+                {/* if so, show a button to view the next page of results */}
+                <button id="next-page" onClick={handleNextPage}>
+                  View Next Page
+                </button>
+              </>
+            ) : (
+              <>{/* if number of results is less than 10, show nothing */}</>
+            )}
+            {/* check if the results page number is greater than one */}
+          </div>
+        </>
+      )}
     </div>
   );
 }
-
 
 // ----------------- old code -----------------------
 // export default function App() {

@@ -1,10 +1,13 @@
 import { useState } from "react";
 
-export default function Form({ 
+export default function Form({
   getMovieList,
-  // setSearchTermEntered,
-  // setResultPage 
+  searchTermEntered,
+  setSearchTermEntered,
+  resultsPage,
+  setResultsPage
 }) {
+  // state to hold form data
   const [formData, setFormData] = useState({
     searchTerm: ""
   });
@@ -13,27 +16,22 @@ export default function Form({
   };
 
   const handleSubmit = async (e) => {
+    // prevent from reloading the page when form is submitted (need with every from in React)
     e.preventDefault();
-    // setSearchTermEntered(formData.searchTerm)
-    // setResultPage(1)
+    setSearchTermEntered(formData.searchTerm);
+    setResultsPage(1);
     await getMovieList(formData.searchTerm);
   };
-
   return (
-    <div>
-      <h1 id="title">Search A Movie, Any Movie!</h1>
-      <form className="form" onSubmit={handleSubmit}>
-        <label>Search : </label>
-        <input
-          className="field"
-          name="searchTerm"
-          type="text"
-          onChange={handleChange}
-          value={formData.searchTerm}
-        />
-        <br />
-        <input className="submit" type="submit" />
-      </form>
-    </div>
+    <form onSubmit={handleSubmit}>
+      <label>Search :</label>
+      <input
+        name="searchTerm"
+        type="text"
+        onChange={handleChange}
+        value={formData.searchTerm}
+      />
+      <input type="submit" />
+    </form>
   );
 }
