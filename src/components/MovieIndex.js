@@ -34,6 +34,7 @@ export default function MovieIndex({
 
 
 
+
 // -------------------- old code ---------------------- 
 // import MovieDisplay from "./MovieDisplay";
 // export default function MovieList({ movies }) {

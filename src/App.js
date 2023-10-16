@@ -3,28 +3,33 @@ const PORT = process.env.PORT || 3009
 
 import { useState, useEffect } from "react";
 
+// import components
 import Form from "./components/Form";
 import MovieIndex from "./components/MovieIndex";
 import MovieDisplay from "./components/MovieDisplay";
-
+// import css styles
 import "./styles.css";
 
 export default function App() {
-  const apiKey = process.env.REACT_APP_API_KEY; 
-
+  // save api key to variable
+  const apiKey = process.env.REACT_APP_API_KEY;
   // state to hold movie list data
   const [movieList, setMovieList] = useState(null);
   const [selectedMovie, setSelectedMovie] = useState(null);
-  // const [resultPage, setResultPage] = useState(1);
-  // const [searchTermEntered, setSearchTermEntered] = useState("Harry Potter")
+  const [resultsPage, setResultsPage] = useState(1);
+  const [searchTermEntered, setSearchTermEntered] = useState("Lord of the Rings");
 
   // function to get movie list
-  const getMovieList = async (searchTerm) => {
+  const getMovieList = async (searchTerm, pageNum = 1) => {
     try {
+      // reset selectedMovie state to "null"
       setSelectedMovie(null);
+      if (!searchTerm) {
+        throw new Error("No Movie Entered");
+      }
       // make fetch request and store response
       const response = await fetch(
-        `https://www.omdbapi.com/?apikey=${apiKey}&s=${searchTerm}`
+        `https://www.omdbapi.com/?apikey=${apiKey}&s=${searchTerm}&type=movie&page=${pageNum}`
       );
       // parse JSON response into a javascript object
       const data = await response.json();
@@ -34,8 +39,30 @@ export default function App() {
       console.error(error);
     }
   };
+  // calculate max number of pages of results
+  let maxResultsPages;
+  if (movieList) maxResultsPages = Math.ceil(movieList.totalResults / 10);
 
-  // Adds a default search term
+  // handler function for Next Page button
+  const handleNextPage = async () => {
+    if (resultsPage < maxResultsPages) {
+      const newResultsPage = resultsPage + 1;
+      setResultsPage(newResultsPage);
+      getMovieList(searchTermEntered, newResultsPage);
+      window.scrollTo(0, 0);
+    }
+  };
+
+  // handler function for Previous Page button
+  const handlePrevPage = async () => {
+    if (resultsPage > 1) {
+      const newResultsPage = resultsPage - 1;
+      setResultsPage(newResultsPage);
+      getMovieList(searchTermEntered, newResultsPage);
+      window.scrollTo(0, 0);
+    }
+  };
+
   useEffect(() => {
     getMovieList("Lord of the Rings");
   }, []);
@@ -112,6 +139,7 @@ export default function App() {
     </div>
   );
 }
+
 
 // ----------------- old code -----------------------
 // export default function App() {
