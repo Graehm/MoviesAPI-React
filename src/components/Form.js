@@ -26,6 +26,7 @@ export default function Form({
     <form onSubmit={handleSubmit}>
       <label>Search :</label>
       <input
+        id="inputField"
         name="searchTerm"
         type="text"
         onChange={handleChange}

@@ -70,7 +70,7 @@ export default function App() {
   return (
     <div className="App">
       <header>
-        <h1>Search for a Movie</h1>
+        <h1>Search Any Movie</h1>
         <div className="search">
           <Form
             getMovieList={getMovieList}
