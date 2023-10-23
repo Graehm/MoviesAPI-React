@@ -2,6 +2,7 @@
 const PORT = process.env.PORT || 3009
 
 import { useState, useEffect } from "react";
+import Navbar from "./components/NavBar";
 
 // import components
 import Form from "./components/Form";
@@ -69,6 +70,13 @@ export default function App() {
 
   return (
     <div className="App">
+      {/* <Navbar>
+      getMovieList={getMovieList}
+            searchTermEntered={searchTermEntered}
+            setSearchTermEntered={setSearchTermEntered}
+            resultsPage={resultsPage}
+            setResultsPage={setResultsPage}
+      </Navbar> */}
       <header>
         <h1>Search Any Movie</h1>
         <div className="search">
