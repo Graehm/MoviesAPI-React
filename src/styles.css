@@ -81,6 +81,10 @@ label {
   align-items: center;
 }
 
+.movie:hover, .movie:active {
+  transform: scale(1.07);
+}
+
 .movie-info {
   padding: 1.5rem 0;
   text-align: center;
